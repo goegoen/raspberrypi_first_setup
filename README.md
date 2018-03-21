@@ -24,7 +24,7 @@ raspberrypi の初期設定を ansible で実行できるようにまとめた�
 ssh 'raspberrypi 名'
 ```
 
-1. 使用する環境に合わせてファイルの記述を修正します
+2. 使用する環境に合わせてファイルの記述を修正します
     1. hosts/production ファイルの修正
       ```bash
       vi hosts/production
@@ -46,17 +46,17 @@ ssh 'raspberrypi 名'
      mv host_vars/rasp1 host_vars/hoge <- raspberrypi 名に変更します
      ```
 
-2. エラーが発生しないかテストします
+3. エラーが発生しないかテストします
 ```bash
 ansible-playbook site.yml --check -D
 ```
 
-3. 実行します
+4. 実行します
 ```bash
 ansible-playbook site.yml
 ```
 
-4. 再起動がされるため、/etc/hosts や ~/.ssh/config に新しいホスト名とIPアドレスの記述をしてssh などで疎通確認を実施します
+5. 再起動がされるため、/etc/hosts や ~/.ssh/config に新しいホスト名とIPアドレスの記述をしてssh などで疎通確認を実施します
 
 
 
