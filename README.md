@@ -25,26 +25,26 @@ ssh 'raspberrypi 名'
 ```
 
 1. 使用する環境に合わせてファイルの記述を修正します
-  1. hosts/production ファイルの修正
-    ```bash
-    vi hosts/production
-    ---
-    raspberrypi 名に変更します
-    ```  
+    1. hosts/production ファイルの修正
+      ```bash
+      vi hosts/production
+      ---
+      raspberrypi 名に変更します
+      ```  
     
-  1. host_vars/rasp1  
+    1. host_vars/rasp1  
   
-  ```bash
-  vi host_vars/rasp1
-  ---
-  my_ipaddr: "設定するIPアドレス"
-  my_gateway: "設定するゲートウェイ"
-  my_dns: "設定するDNSサーバ"
-  ```
+     ```bash
+     vi host_vars/rasp1
+     ---
+     my_ipaddr: "設定するIPアドレス"
+     my_gateway: "設定するゲートウェイ"
+     my_dns: "設定するDNSサーバ"
+     ```
 
-  ```bash
-  mv host_vars/rasp1 host_vars/hoge <- raspberrypi 名に変更します
-  ```
+     ```bash
+     mv host_vars/rasp1 host_vars/hoge <- raspberrypi 名に変更します
+     ```
 
 1. エラーが発生しないかテストします
 ```bash
