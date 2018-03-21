@@ -1,0 +1,3 @@
+[raspberry]
+# cat /etc/ssh/ssh_config or ~/.ssh/config connect name
+rasp1

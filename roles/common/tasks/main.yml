@@ -1,0 +1,46 @@
+- name: set timezone to Asia/Tokyo
+  timezone:
+    name: Asia/Tokyo
+
+- name: set hostname
+  hostname: name={{ inventory_hostname }}
+
+- name: modify /etc/hosts
+  replace: >-
+    dest='/etc/hosts'
+    regexp='raspberrypi'
+    replace={{ inventory_hostname }}
+
+- name: Update packages list
+  shell: apt-get -y update
+
+- name: Upgrade all packages 
+  shell: apt-get -y upgrade
+
+- name: Update all packages to the latest version
+  shell: apt-get -y dist-upgrade  
+
+- name: change ip address
+  lineinfile: >-
+    dest='/etc/dhcpcd.conf'
+    line='{{ item.line }}'
+  with_items:
+    - line: 'interface wlan0'
+    - line: 'static ip_address={{ my_ipaddr }}/24'
+    - line: 'static routers={{ my_gateway }}'
+    - line: 'static domain_name_servers={{ my_dns }}'
+
+- name: restart server
+  become: yes
+  shell: sleep 2 && /sbin/shutdown -r now
+  async: 1
+  poll: 0
+
+- name: waiting 30 secs for server to come back
+  become: false
+  local_action: wait_for
+     host={{ my_ipaddr }}
+     port=22
+     state=started
+     delay=30
+     timeout=120
