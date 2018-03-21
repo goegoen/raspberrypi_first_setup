@@ -32,7 +32,7 @@ ssh 'raspberrypi 名'
       raspberrypi 名に変更します
       ```  
     
-    1. host_vars/rasp1  
+    2. host_vars/rasp1  
   
      ```bash
      vi host_vars/rasp1
@@ -46,17 +46,17 @@ ssh 'raspberrypi 名'
      mv host_vars/rasp1 host_vars/hoge <- raspberrypi 名に変更します
      ```
 
-1. エラーが発生しないかテストします
+2. エラーが発生しないかテストします
 ```bash
 ansible-playbook site.yml --check -D
 ```
 
-1. 実行します
+3. 実行します
 ```bash
 ansible-playbook site.yml
 ```
 
-1. 再起動がされるため、/etc/hosts や ~/.ssh/config に新しいホスト名とIPアドレスの記述をしてssh などで疎通確認を実施します
+4. 再起動がされるため、/etc/hosts や ~/.ssh/config に新しいホスト名とIPアドレスの記述をしてssh などで疎通確認を実施します
 
 
 
